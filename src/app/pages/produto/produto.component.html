@@ -1,0 +1,73 @@
+<section class="content">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Gerenciamento de Produtos</h3>
+                <div class="row"></div>
+               
+
+                <div class="box-tools">
+                    <a [routerLink]="['/produto/cad']" class="btn btn-success"  >
+                        <i class="fa fa-plus"></i> Novo 
+                    </a>&nbsp;
+                    <a [routerLink]="[]" class="btn btn-primary"  (click)="sincronizarTudo()" >
+                        <i class="fa fa-refresh"></i> Sincronizar Tudo
+                    </a>
+                </div>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body ">
+                <div class="scrollme">
+
+                    <table class="table table-responsive  table-hover" >
+                        <thead>
+                            <th>Nome</th>
+                            <th>Código de Barra</th>
+                            <th>Estoque</th>
+                            <th>Status</th>
+                            <th>Imagem</th>
+                            <th style="width: 110px">Ação</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of items">
+                                <td>{{ obj.pro_nome }}</td>
+                                <td>{{ obj.pro_codigo_barra }}</td>
+                                <td>{{ obj.pro_estoque }}</td>
+                                <td> <i [class]="obj.pro_status == 1 ? 'fa fa-check' : ''"></i> </td>
+                                <td> <img *ngIf="obj.pro_imagem != null " [src]="host + '/foto/' + obj.pro_imagem" width="30"> </td>
+                                <td>
+                                    <a [routerLink]="['/produto/edit',obj.pro_id]" title="Editar" >
+                                        <i class="fa  fa-edit"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a [routerLink]="[]" title="Sincronizar" (click)="sincronizar(obj.pro_id)">
+                                        <i class="fa  fa-refresh"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a [routerLink]="[]" title="Remover" (click)="perguntaRemover( obj )">
+                                        <i class="fa  fa-remove text-danger"></i>
+                                    </a>
+                                    &nbsp;
+                                   
+                                </td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              
+            </div>
+        </div>
+        <!-- /.box -->
+
+        
+        
+        
+        <!-- /.col -->
+    </div>
+</section>
+<!-- content -->

@@ -1,0 +1,61 @@
+<section class="content">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Pedidos em atendimento</h3>
+                <div class="row"></div>
+               
+
+                <div class="box-tools">
+                    
+                </div>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body ">
+                <div class="scrollme">
+
+                    <table class="table table-responsive  table-hover" >
+                        <thead>
+                            <th>Cliente</th>
+                            <th>Data do Pedido</th>
+                            <th>Pagamento</th>
+                            <th>Troco</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th style="width: 110px">Ação</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of items">
+                                <td>{{ obj._cliente.cli_nome }}</td>
+                                <td>{{ obj.ped_dt_pedido | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                <td>{{ obj.ped_tipo_pagamento == 'D' ? 'Dinheiro' : 'Cartão de Crédito' }}</td>
+                                <td *ngIf="obj.ped_tipo_pagamento == 'D'">{{ obj.ped_troco | currency: 'BRL' }}</td>
+                                <td *ngIf="obj.ped_tipo_pagamento != 'D'">0</td>
+                                <td>{{ obj.total | currency: 'BRL' }}</td>
+                                <td>{{ obj._status.status_descricao }}</td>
+                                <td>
+                                    <a [routerLink]="['/pedido/detalhe', obj.ped_id]" class="btn  btn-success" title="Editar" >
+                                        <i class="fa  fa-edit">Mudar Status</i>
+                                    </a>  
+                                </td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              
+            </div>
+        </div>
+        <!-- /.box -->
+
+        
+        
+        
+        <!-- /.col -->
+    </div>
+</section>
+<!-- content -->

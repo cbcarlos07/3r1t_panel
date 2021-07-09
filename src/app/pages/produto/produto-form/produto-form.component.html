@@ -1,0 +1,85 @@
+<section class="content">
+        
+    <div class="col-md-12">
+        <form [formGroup]="formCad" (ngSubmit)="salvar()">
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                    
+                    <div class="box-tools">
+                        <a [routerLink]="[]" class="btn btn-success" (click)="voltar()" >
+                            <i class="fa fa-mail-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="ordem">Código de Barra</label>
+                            <input  class="form-control" placeholder="Código de Barra" formControlName="pro_codigo_barra"/>
+                        </app-input>
+                    </div>
+
+                    <div class="col-md-6">
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="ordem">Nome</label>
+                            <input  class="form-control" placeholder="Nome" formControlName="pro_nome"/>
+                        </app-input>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="checkbox" style="padding-top: 25px">
+                                <label>
+                                    <input  type="checkbox"   formControlName="pro_status"/>
+                                    Ativo 
+                                </label>
+                            </div>
+                        
+                    </div>
+                    <div class="row"></div>
+
+                    <div class="col-md-4">
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="ordem">Preço de Compra</label>
+                            <input currencyMask   class="form-control" placeholder="Preço de Compra" formControlName="pro_preco_compra" [options]="options" />
+                        </app-input>
+                    </div>
+
+                    <div class="col-md-4">
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="ordem">Margem de Lucro (%)</label>
+                            <input type="number" class="form-control"  placeholder="Margem de lucro" formControlName="pro_margem" min="0" (keyup)="calcPrecoVenda()"/>
+                        </app-input>
+                    </div>
+
+                    <div class="col-md-4">
+                        <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                            <label for="ordem">Preço de Venda</label>
+                            <input currencyMask   class="form-control" placeholder="Preço de Venda" formControlName="pro_preco_venda" [options]="options" />
+                        </app-input>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="minimo">Imagem</label>
+                            <input type="file"  (change)="fileChangeEvent($event)" accept="image/x-png,image/gif,image/jpeg" >
+                        </div>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <img [src]="imgImage" width="150" *ngIf="imgImage" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-footer clearfix">
+                <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>
+            </div>
+
+        </form>
+    </div>
+
+</section>

@@ -1,0 +1,79 @@
+<section class="content">
+        
+    <div class="col-md-12">        
+        <form [formGroup]="formCad" (ngSubmit)="salvar()">
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ title }}</h3>
+                    <div class="box-tools">
+                        <a [routerLink]="[]" class="btn btn-success" (click)="voltar()" >
+                            <i class="fa fa-mail-reply"></i> Voltar
+                        </a>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    
+                    <div class="col-md-6">
+
+                        
+                        <div class="col-md-12 form-group">
+                            <app-input [showTip]="false">
+                                <label for="observacao">Nome</label>
+                                <input class="form-control" formControlName="usu_nome" />
+                            </app-input>
+                        
+                        </div>
+                    
+                        <div class="col-md-12">
+                            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                                <label for="minimo">Login</label>
+                                <input class="form-control" formControlName="usu_login" (keyup)="comprarLogin()">
+                            </app-input>                        
+                        </div>
+
+                        <div class="col-md-12">
+                            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                                <label for="minimo">Cargo</label>
+                                <select class="form-control" formControlName="usu_cargo_id">
+                                    <option *ngFor="let obj of cargos" [value]="obj.car_id">{{ obj.car_nome }}</option>
+                                </select>
+                            </app-input>                        
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="">Senha</label>
+                            <app-input errorMessage="Este campo é obrigatório" [showTip]="false">
+                                <div class="input-group">
+                                    <input [type]="type1" class="form-control" placeholder="Digite uma senha" minlength="6" formControlName="usu_senha"  >
+                                    <span class="input-group-addon" (click)="changeType()"><i class="fa fa-eye-slash"></i></span>
+                                </div>
+                            </app-input>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Confirme sua Senha</label>
+                            <div class="input-group has-feedback" [class.has-error]="formCad.hasError('passwordNotMatch')" [class.has-success]="validarSenha()">
+                                <input [type]="type2" class="form-control" placeholder="Digite uma senha" minlength="6" formControlName="usu_senha_confirm"  >
+                                <span class="input-group-addon" (click)="changeType1()"><i class="fa fa-eye-slash"></i></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer clearfix">
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" type="submit" [disabled]="formCad.invalid"> <i class="fa fa-save"></i> Salvar</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>    
+
+    </div>
+
+</section>

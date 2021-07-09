@@ -1,0 +1,73 @@
+<section class="content" id="content">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Detalhes do Pedido</h3>
+                <div class="row"></div>
+               
+
+                <div class="box-tools">
+                    <div *ngIf="pedido">
+                        <button class="btn btn-success" (click)="mudarStatus(3)" *ngIf="pedido.ped_status == 1"> <i class="fa fa-check"></i> &nbsp; Atender </button>&nbsp;
+                        <button class="btn btn-warning" (click)="mudarStatus(4)" *ngIf="pedido.ped_status == 3"> <i class="fa fa-check"></i> &nbsp; Saiu para entrega </button>&nbsp;
+                        <button class="btn btn-danger" (click)="mudarStatus(5)" *ngIf="pedido.ped_status == 4"> <i class="fa fa-check"></i> &nbsp; Finalizar Atendimento </button>&nbsp;
+
+                        <button class="btn btn-primary" (click)="voltar()"><i class="fa fa-reply"></i> &nbsp; Voltar </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body ">
+                <div class="panel panel-default">
+                    <div class="panel-body" *ngIf="pedido">
+                        Nome: <strong>{{pedido._cliente.cli_nome}}</strong><br>
+                        Rua: <strong>{{pedido._cliente.cli_rua}}, {{ pedido._cliente.cli_numero }}</strong><br>
+                        Bairro: <strong>{{pedido._cliente.cli_bairro}}</strong><br>
+                        Situação: <strong>{{pedido._status.status_descricao}}</strong><br>
+                        Total do Pedido: <strong>{{ pedido.total | currency: 'BRL' }}</strong><br>
+                        Forma de Pagamento: <strong>{{ pedido.ped_tipo_pagamento == 'D' ? 'Dinheiro' : 'Cartão de Crédito' }}</strong><br>
+                        Troco: <strong *ngIf="pedido.ped_tipo_pagamento == 'D'">{{ pedido.ped_troco | currency: 'BRL' }}</strong><br>
+                        <button class="btn btn-default" (click)="createPDF()"> <i class="fa  fa-print"></i> Imprimir </button>                  
+                    </div>
+
+                </div>
+                <div class="scrollme">
+
+                    <table class="table table-responsive  table-hover" >
+                        <thead>
+                            <th>PRODUTO</th>
+                            <th>Quantidade</th>
+                            <th>Valor Unitário</th>
+                            <th>SubTotal</th>
+                            
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of items">
+                                <td>{{ obj.produto }}</td>
+                                <td>{{ obj.ped_qtde }}</td>
+                                <td>{{ obj.ped_valor | currency: 'BRL' }}</td>
+                                <td>{{ obj.total | currency: 'BRL' }}</td>
+                                
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              
+            </div>
+        </div>
+        <!-- /.box -->
+
+        
+        
+        
+        <!-- /.col -->
+    </div>
+</section>
+<!-- content -->
+
+<div #printPDF></div>

@@ -1,0 +1,62 @@
+<section class="content">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Gerenciamento de Usuários</h3>
+                <div class="row"></div>
+               
+
+                <div class="box-tools">
+                    <a [routerLink]="['/usuario/cad']" class="btn btn-success"  >
+                        <i class="fa fa-plus"></i> Novo 
+                    </a>
+                </div>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body ">
+                <div class="scrollme">
+
+                    <table class="table table-responsive  table-hover" >
+                        <thead>
+                            <th>Nome</th>                            
+                            <th>Cargo</th>
+                            <th>Login</th>                            
+                            <th style="width: 110px">Ação</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of items">
+                                <td>{{ obj.usu_nome }}</td>
+                                <td>{{ obj.car_nome }}</td>
+                                <td>{{ obj.usu_login }}</td>
+                                <td>
+                                    <a [routerLink]="['/usuario/edit',obj.usu_id]" title="Editar" >
+                                        <i class="fa  fa-edit"></i>
+                                    </a>
+                                    &nbsp;
+                                    <a [routerLink]="[]" title="Remover" (click)="perguntaRemover( obj )">
+                                        <i class="fa  fa-remove text-danger"></i>
+                                    </a>
+                                    &nbsp;
+                                   
+                                </td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              
+            </div>
+        </div>
+        <!-- /.box -->
+
+        
+        
+        
+        <!-- /.col -->
+    </div>
+</section>
+<!-- content -->
