@@ -67,7 +67,7 @@ export class PedidoItemComponent implements OnInit {
 	}
 
 	mudarStatus(acao: number){
-		const obj = { ped_status: acao }
+		const obj = { pedStatus: acao }
 		this._pedidoService
 			.mudarStatus( this.id, obj )
 			.subscribe(()=>{

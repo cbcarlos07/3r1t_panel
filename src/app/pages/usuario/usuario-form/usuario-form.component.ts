@@ -140,7 +140,7 @@ export class UsuarioFormComponent implements OnInit {
 			.get()
 			.subscribe((response: Cargo[])=>{
 				this.cargos = response
-				this.formCad.controls.usu_cargo_id.setValue( this.cargos[0].car_id )
+				this.formCad.controls.usu_cargo_id.setValue( this.cargos[0].carId )
 			})
 	}
 

@@ -33,8 +33,8 @@ export class CargoComponent implements OnInit {
 	}
 
 	telaEditar(obj: Cargo){
-		this.id = obj.car_id
-		delete obj.car_id
+		this.id = obj.carId
+		delete obj.carId
 		this.title = 'Edtair status'
 		this.formulario(obj)
 	}

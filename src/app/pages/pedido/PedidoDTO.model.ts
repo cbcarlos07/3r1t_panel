@@ -1,7 +1,7 @@
 export interface PedidoDTO {
     ped_id: number
     ped_cli: number
-    ped_status: number
+    pedStatus: number
     ped_dt_pedido: string
     cli_nome: string
     total?: number,

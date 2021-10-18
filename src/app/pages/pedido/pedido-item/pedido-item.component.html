@@ -8,9 +8,9 @@
 
                 <div class="box-tools">
                     <div *ngIf="pedido">
-                        <button class="btn btn-success" (click)="mudarStatus(3)" *ngIf="pedido.ped_status == 1"> <i class="fa fa-check"></i> &nbsp; Atender </button>&nbsp;
-                        <button class="btn btn-warning" (click)="mudarStatus(4)" *ngIf="pedido.ped_status == 3"> <i class="fa fa-check"></i> &nbsp; Saiu para entrega </button>&nbsp;
-                        <button class="btn btn-danger" (click)="mudarStatus(5)" *ngIf="pedido.ped_status == 4"> <i class="fa fa-check"></i> &nbsp; Finalizar Atendimento </button>&nbsp;
+                        <button class="btn btn-success" (click)="mudarStatus(3)" *ngIf="pedido.pedStatus == 1"> <i class="fa fa-check"></i> &nbsp; Atender </button>&nbsp;
+                        <button class="btn btn-warning" (click)="mudarStatus(4)" *ngIf="pedido.pedStatus == 3"> <i class="fa fa-check"></i> &nbsp; Saiu para entrega </button>&nbsp;
+                        <button class="btn btn-danger" (click)="mudarStatus(5)" *ngIf="pedido.pedStatus == 4"> <i class="fa fa-check"></i> &nbsp; Finalizar Atendimento </button>&nbsp;
 
                         <button class="btn btn-primary" (click)="voltar()"><i class="fa fa-reply"></i> &nbsp; Voltar </button>
                     </div>
@@ -21,13 +21,13 @@
             <div class="box-body ">
                 <div class="panel panel-default">
                     <div class="panel-body" *ngIf="pedido">
-                        Nome: <strong>{{pedido._cliente.cli_nome}}</strong><br>
-                        Rua: <strong>{{pedido._cliente.cli_rua}}, {{ pedido._cliente.cli_numero }}</strong><br>
-                        Bairro: <strong>{{pedido._cliente.cli_bairro}}</strong><br>
-                        Situação: <strong>{{pedido._status.status_descricao}}</strong><br>
+                        Nome: <strong>{{pedido._cliente.cliNome}}</strong><br>
+                        Rua: <strong>{{pedido._cliente.cliRua}}, {{ pedido._cliente.cliNumero }}</strong><br>
+                        Bairro: <strong>{{pedido._cliente.cliBairro}}</strong><br>
+                        Situação: <strong>{{pedido._status.statusDescricao}}</strong><br>
                         Total do Pedido: <strong>{{ pedido.total | currency: 'BRL' }}</strong><br>
-                        Forma de Pagamento: <strong>{{ pedido.ped_tipo_pagamento == 'D' ? 'Dinheiro' : 'Cartão de Crédito' }}</strong><br>
-                        Troco: <strong *ngIf="pedido.ped_tipo_pagamento == 'D'">{{ pedido.ped_troco | currency: 'BRL' }}</strong><br>
+                        Forma de Pagamento: <strong>{{ pedido.pedTipoPagamento == 'D' ? 'Dinheiro' : 'Cartão de Crédito' }}</strong><br>
+                        Troco: <strong *ngIf="pedido.ped_tipo_pagamento == 'D'">{{ pedido.pedTroco | currency: 'BRL' }}</strong><br>
                         <button class="btn btn-default" (click)="createPDF()"> <i class="fa  fa-print"></i> Imprimir </button>                  
                     </div>
 
@@ -45,8 +45,8 @@
                         <tbody>
                             <tr *ngFor="let obj of items">
                                 <td>{{ obj.produto }}</td>
-                                <td>{{ obj.ped_qtde }}</td>
-                                <td>{{ obj.ped_valor | currency: 'BRL' }}</td>
+                                <td>{{ obj.pedQtde }}</td>
+                                <td>{{ obj.pedValor | currency: 'BRL' }}</td>
                                 <td>{{ obj.total | currency: 'BRL' }}</td>
                                 
                             </tr>

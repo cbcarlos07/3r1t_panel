@@ -42,6 +42,13 @@ export class PedidoService {
 			} )
 		})
 	}
+	escutaDePedidoAtendimento(){
+		return new Observable(observer => {
+			this.socket.on( 'pedido_atendido', (data: any) => {
+				observer.next(data)
+			} )
+		})
+	}
 
 	
 }

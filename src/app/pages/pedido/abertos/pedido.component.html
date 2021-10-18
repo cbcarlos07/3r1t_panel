@@ -26,14 +26,14 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let obj of items">
-                                <td>{{ obj._cliente.cli_nome }}</td>
-                                <td>{{ obj.ped_dt_pedido | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
-                                <td>{{ obj.ped_tipo_pagamento == 'D' ? 'Dinheiro' : 'Cartão de Crédito' }}</td>
-                                <td *ngIf="obj.ped_tipo_pagamento == 'D'">{{ obj.ped_troco | currency: 'BRL' }}</td>
-                                <td *ngIf="obj.ped_tipo_pagamento != 'D'">0</td>
+                                <td>{{ obj._cliente.cliNome }}</td>
+                                <td>{{ obj.ped_dtPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                                <td>{{ obj.ped_tipoPagamento == 'D' ? 'Dinheiro' : 'Cartão de Crédito' }}</td>
+                                <td *ngIf="obj.pedTipoPagamento == 'D'">{{ obj.pedTroco | currency: 'BRL' }}</td>
+                                <td *ngIf="obj.pedTipoPagamento != 'D'">0</td>
                                 <td>{{ obj.total | currency: 'BRL' }}</td>
                                 <td>
-                                    <a [routerLink]="['/pedido/detalhe', obj.ped_id]" class="btn  btn-success" title="Editar" >
+                                    <a [routerLink]="['/pedido/detalhe', obj.pedId]" class="btn  btn-success" title="Editar" >
                                         <i class="fa  fa-edit">Atender</i>
                                     </a>  
                                 </td>

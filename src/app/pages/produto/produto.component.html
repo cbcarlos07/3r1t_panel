@@ -31,17 +31,17 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let obj of items">
-                                <td>{{ obj.pro_nome }}</td>
-                                <td>{{ obj.pro_codigo_barra }}</td>
-                                <td>{{ obj.pro_estoque }}</td>
-                                <td> <i [class]="obj.pro_status == 1 ? 'fa fa-check' : ''"></i> </td>
-                                <td> <img *ngIf="obj.pro_imagem != null " [src]="host + '/foto/' + obj.pro_imagem" width="30"> </td>
+                                <td>{{ obj.proNome }}</td>
+                                <td>{{ obj.proCodigoBarra }}</td>
+                                <td>{{ obj.proEstoque }}</td>
+                                <td> <i [class]="obj.proStatus == 1 ? 'fa fa-check' : ''"></i> </td>
+                                <td> <img *ngIf="obj.proImagem != null " [src]="host + '/foto/' + obj.proImagem" width="30"> </td>
                                 <td>
-                                    <a [routerLink]="['/produto/edit',obj.pro_id]" title="Editar" >
+                                    <a [routerLink]="['/produto/edit',obj.proId]" title="Editar" >
                                         <i class="fa  fa-edit"></i>
                                     </a>
                                     &nbsp;
-                                    <a [routerLink]="[]" title="Sincronizar" (click)="sincronizar(obj.pro_id)">
+                                    <a [routerLink]="[]" title="Sincronizar" (click)="sincronizar(obj.proId)">
                                         <i class="fa  fa-refresh"></i>
                                     </a>
                                     &nbsp;

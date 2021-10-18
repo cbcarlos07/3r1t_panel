@@ -36,7 +36,7 @@ export class PedidoComponent implements OnInit {
 		this._pedidoService
 			.escutaDePedido()
 			.subscribe((response: any)=>{	
-				this._notifictionService.notify({message: response.msg, type: 'success'})
+				this._notifictionService.notify({message: 'Novo pedido efetuado', type: 'success'})
 				this.findAll()
 				
 			})

@@ -41,6 +41,7 @@ export class MenuComponent implements OnInit {
 
 		this.getMenu()
 		this.escutaDePedido()
+		this.escutaDePedidoAtendimento()
 	}
 
 	getMenu(){
@@ -84,8 +85,18 @@ export class MenuComponent implements OnInit {
 			.escutaDePedido()
 			.subscribe((response: any)=>{
 				
-				this._notifictionService.notify({message: response.msg, type: 'success'})
+				this._notifictionService.notify({message: 'Novo pedido efetuado', type: 'success'})
 				this.getAbertos()
+				
+			})
+	}
+	escutaDePedidoAtendimento(){
+		this._pedidoService
+			.escutaDePedidoAtendimento()
+			.subscribe((response: any)=>{
+				
+				this._notifictionService.notify({message: 'Pedido em atendimento', type: 'success'})
+				this.getAtendmentos()
 				
 			})
 	}
